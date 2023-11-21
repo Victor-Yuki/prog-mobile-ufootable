@@ -14,3 +14,9 @@ Para testar o código
 caso o aplicativo trave ao clicar em uma opção de 'Manage *' ou clicar em algum nome:
   - feche o aplicativo
   - abra o aplicativo novamente, o problema deve ter sido resolvido.
+
+versões utilizadas no desenvolvimento:
+  - node v20.9.0
+  - npm 10.1.0
+  - ionic 7.1.5
+  - java 21.0.1
