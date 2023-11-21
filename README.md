@@ -7,13 +7,15 @@ Para testar o código
 > ionic build
 3. adicionar a pasta android
 > ionic capacitor add android
-4. preparar para executar no Android Studio
+4. aplicar o appicon e splash screen
+> npx capacitor-assets generate
+5. preparar para executar no Android Studio
 > ionic cap build android
-5. executar o aplicativo no Android Studio em um dispositivo virtual ou conectado.
+6. executar o aplicativo no Android Studio em um dispositivo virtual ou conectado.
 
 caso o aplicativo trave ao clicar em uma opção de 'Manage *' ou clicar em algum nome:
-  - feche o aplicativo
-  - abra o aplicativo novamente, o problema deve ter sido resolvido.
+  1. feche o aplicativo
+  2. abra o aplicativo novamente, o problema deve ter sido resolvido.
 
 versões utilizadas no desenvolvimento:
   - node v20.9.0
