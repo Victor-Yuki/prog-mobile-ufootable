@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Players Manager</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-item className="ion-margin-top">
+    <ion-grid>
+      <ion-row><ion-label labelPlacement="floating">Select Player</ion-label></ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-select aria-label="League" placeholder="Select league" (ionChange)="handleChangeLeague($event)"
+                value="{{passedLeagueName}}">
+                <ion-select-option *ngFor="let league of leagues()"
+                  value={{league.Name}}>{{league.Name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-select aria-label="Team" placeholder="Select team" (ionChange)="handleChangeTeam($event)"
+                value="{{passedTeamName}}">
+                <ion-select-option *ngFor="let team of teams()" value={{team.Name}}>{{team.Name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-select aria-label="Player" placeholder="Select player" (ionChange)="handleChangePlayer($event)"
+                value="{{passedPlayerName}}">
+                <ion-select-option *ngFor="let player of players()"
+                  value={{player.Name}}>{{player.Name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Edit Player Info</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div id="updateTeamForm" action="">
+        <ion-input fill="outline" label="Team Name" labelPlacement="floating" [(ngModel)]="newPlayerName"
+          type="text"></ion-input>
+        <ion-input fill="outline" label="Nation" labelPlacement="floating" [(ngModel)]="newPlayerNation" type="text"
+          className="ion-margin-top"></ion-input>
+        <ion-input fill="outline" label="Age" labelPlacement="floating" [(ngModel)]="newPlayerAge" type="number"
+          className="ion-margin-top"></ion-input>
+        <ion-input fill="outline" label="Matches" labelPlacement="floating" [(ngModel)]="newPlayerMatches" type="number"
+          className="ion-margin-top"></ion-input>
+        <ion-input fill="outline" label="Starts" labelPlacement="floating" [(ngModel)]="newPlayerStarts" type="number"
+          className="ion-margin-top"></ion-input>
+        <ion-input fill="outline" label="Minutes" labelPlacement="floating" [(ngModel)]="newPlayerMinutes" type="number"
+          className="ion-margin-top"></ion-input>
+        <ion-input fill="outline" label="Goals" labelPlacement="floating" [(ngModel)]="newPlayerGoals" type="number"
+          className="ion-margin-top"></ion-input>
+        <ion-input fill="outline" label="Assists" labelPlacement="floating" [(ngModel)]="newPlayerAssists" type="number"
+          className="ion-margin-top"></ion-input>
+        <ion-input fill="outline" label="Position" labelPlacement="floating" [(ngModel)]="newPlayerPosition" type="text"
+          className="ion-margin-top"></ion-input>
+
+
+        <ion-button (click)="updatePlayer()" expand="block" className="ion-margin-top">Update Player Info</ion-button>
+        <ion-button (click)="deletePlayer()" expand="block" className="ion-margin-top" color="danger">Delete
+          Player</ion-button>
+        <ion-button (click)="addPlayer()" expand="block" className="ion-margin-top" color="success">Add New
+          Player</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

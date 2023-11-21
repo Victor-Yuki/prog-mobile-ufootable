@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title size="large">
+      uF<ion-icon name="football"></ion-icon><ion-icon name="football"></ion-icon>TABLE
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title size="large">uF<ion-icon name="football"></ion-icon><ion-icon
+          name="football"></ion-icon>TABLE</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item>
+    <h1>Ligas</h1>
+  </ion-item>
+  <ion-card *ngFor="let league of arrayOfTeams(); index as i">
+    <ion-card-header>
+      <ion-card-title (click)="goManageLeagues(leagues()[i].Name)">{{leagues()[i].Name}}</ion-card-title>
+      <ion-card-subtitle>Classificação</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid [fixed]="true">
+
+        <ion-row>
+          <ion-col>Pos</ion-col><ion-col
+            size="5">Clube</ion-col><ion-col>Pts</ion-col><ion-col>PJ</ion-col><ion-col>SG</ion-col>
+        </ion-row>
+
+        <ion-row *ngFor="let team of league[leagues()[i].Name]; index as y">
+          <ion-col>{{y+1}}</ion-col>
+          <ion-col size="5" (click)="goManageTeams(team.Name, team.League)">{{team.Name}}</ion-col>
+          <ion-col>{{team.Pts}}</ion-col>
+          <ion-col>{{team.Matches}}</ion-col>
+          <ion-col>{{team.GD}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item>
+    <h1>Destaques</h1>
+  </ion-item>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Artilharia</ion-card-title>
+      <ion-card-subtitle>Todas as ligas</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid [fixed]="true">
+        <ion-row><ion-col>Pos</ion-col><ion-col size="5">Jogador</ion-col><ion-col size="4">Clube</ion-col><ion-col>Gols</ion-col></ion-row>
+        <ion-row *ngFor="let player of playersG(); index as y">
+          <ion-col>{{y+1}}</ion-col>
+          <ion-col size="5" (click)="goManagePlayers(player.Name, player.Team)">{{player.Name}}</ion-col>
+          <ion-col size="4" >{{player.Team}}</ion-col>
+          <ion-col>{{player.Goals}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Assistentes</ion-card-title>
+      <ion-card-subtitle>Todas as ligas</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>Pos</ion-col><ion-col size="5">Jogador</ion-col><ion-col size="4">Clube</ion-col><ion-col>Assists</ion-col></ion-row>
+        <ion-row *ngFor="let player of playersA(); index as y">
+          <ion-col>{{y+1}}</ion-col>
+          <ion-col size="5" (click)="goManagePlayers(player.Name, player.Team)">{{player.Name}}</ion-col>
+          <ion-col size="4" >{{player.Team}}</ion-col>
+          <ion-col>{{player.Assists}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

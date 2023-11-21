@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>League Manager</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-select aria-label="League" placeholder="Select League" (ionChange)="handleChange($event)"
+      value="{{passedLeagueName}}">
+      <ion-select-option *ngFor="let league of createdLeagues()"
+        value={{league.Name}}>{{league.Name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{passedLeagueName}}</ion-card-title>
+      <ion-card-subtitle>Classificação</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid [fixed]="true">
+        <ion-row><ion-col>Pos</ion-col><ion-col size="4">Clube</ion-col><ion-col>Pts</ion-col><ion-col>PJ</ion-col><ion-col>GM</ion-col><ion-col>GS</ion-col><ion-col>SG</ion-col></ion-row>
+        <ion-row *ngFor="let team of teams(); index as y" (click)="goManageTeams(team.Name, team.League)">
+          <ion-col>{{y+1}}</ion-col>
+          <ion-col size="4">{{team.Name}}</ion-col>
+          <ion-col>{{team.Pts}}</ion-col>
+          <ion-col>{{team.Matches}}</ion-col>
+          <ion-col>{{team.GF}}</ion-col>
+          <ion-col>{{team.GA}}</ion-col>
+          <ion-col>{{team.GD}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
